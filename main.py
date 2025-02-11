@@ -6,6 +6,7 @@ from tkinter import ttk
 from tkinter.messagebox import showerror
 import time
 from multiprocessing import Process
+import base64
 
 window = Tk()
 window.title("LAN Chat v1.5")
@@ -33,8 +34,14 @@ def send():
     if name == True or False:
         lock()
         return None
-    to_log = name + ': ' + sended_text + '\n'
-    f = open(r""+db.get('spath')+"/chat.log", 'a')
+    sample_string = name + ': ' + sended_text + '\n'
+    sample_string_bytes = sample_string.encode("ascii")
+
+    base64_bytes = base64.b64encode(sample_string_bytes)
+    base64_string = base64_bytes.decode("ascii")
+
+    to_log = base64_string
+    f = open(r""+db.get('spath')+"/Новый текстовый документ.txt", 'a')
     f.write(to_log)
     f.close()
     send_text.delete("1.0","end")
