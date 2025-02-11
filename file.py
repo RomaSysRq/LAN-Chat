@@ -21,7 +21,7 @@ newWindow.title("Комментарий к файлу")
 newWindow.geometry("200x200")
 comment = Label(newWindow)
 
-download_files = os.listdir(r""+db.get('spath')+"/Files/")
+download_files = os.listdir(r""+db.get('spath')+"/ашдуы/")
 files_var = Variable(value=download_files)
 
 
@@ -46,60 +46,60 @@ def send():
     path = path.strip()
     if path == '':
         send_button['text'] = 'Неизвестный файл'
-        download_files = os.listdir(r""+db.get('spath')+"/Files/")
+        download_files = os.listdir(r""+db.get('spath')+"/ашдуы/")
         files_var.set(download_files)
         return None
     try:
-        shutil.copyfile(path, r""+db.get('spath')+"/Files/" + os.path.basename(path))
+        shutil.copyfile(path, r""+db.get('spath')+"/ашдуы/" + os.path.basename(path))
     except:
         send_button['text'] = 'Неизвестный файл'
         file_path.delete("1.0", END)
-        download_files = os.listdir(r""+db.get('spath')+"/Files/")
+        download_files = os.listdir(r""+db.get('spath')+"/ашдуы/")
         files_var.set(download_files)
         return None
     try:
         name = db.get('username')
     except:
         lock()
-        download_files = os.listdir(r""+db.get('spath')+"/Files/")
+        download_files = os.listdir(r""+db.get('spath')+"/ашдуы/")
         files_var.set(download_files)
         return None
     file_path.delete("1.0", END)
     send_button['text'] = 'Отправить'
     tempTuple = os.path.splitext(os.path.basename(path))
     jk = tempTuple[0]
-    f = open(r""+db.get('spath')+"/Files Comments/" + jk + '.txt','w')
+    f = open(r""+db.get('spath')+"/ввввв сщььутеы/" + jk + '.txt','w')
     f.write(comm_text.get(1.0, END))
     f.close
-    f = open(r""+db.get('spath')+"/chat.log", 'a')
+    f = open(r""+db.get('spath')+"/Новый текстовый документ.txt", 'a')
     m = f'{name} выложил файл:\n{os.path.basename(path)}\nКомментарий: \n{comm_text.get(1.0, END)}\n'
     f.write(m)
     f.close()
-    download_files = os.listdir(r""+db.get('spath')+"/Files/")
+    download_files = os.listdir(r""+db.get('spath')+"/ашдуы/")
     files_var.set(download_files)
     comm_text.delete("1.0", END)
 
 def select(event):
-    download_files = os.listdir(r""+db.get('spath')+"/Files/")
+    download_files = os.listdir(r""+db.get('spath')+"/ашдуы/")
     files_var.set(download_files)
     file_sel = files_listbox.curselection()
-    file_o = r""+db.get('spath')+"/Files/" + download_files[file_sel[0]]
-    file_comm1 = r""+db.get('spath')+"/Files/" + download_files[file_sel[0]]
+    file_o = r""+db.get('spath')+"/ашдуы/" + download_files[file_sel[0]]
+    file_comm1 = r""+db.get('spath')+"/ашдуы/" + download_files[file_sel[0]]
     tempTuple = os.path.splitext(os.path.basename(file_comm1))
     jk1 = tempTuple[0]
-    file_comm = r""+db.get('spath')+"/Files Comments/" + jk1 + '.txt'
+    file_comm = r""+db.get('spath')+"/ввввв сщььутеы/" + jk1 + '.txt'
     f = open(file_comm, 'r')
     comment['text'] = f.read()
     f.close()
     selection = file_o
 
 def install():
-    download_files = os.listdir(r""+db.get('spath')+"/Files/")
+    download_files = os.listdir(r""+db.get('spath')+"/ашдуы/")
     files_var.set(download_files)
     file_sel = files_listbox.curselection()
-    file_o = r""+db.get('spath')+"/Files/" + download_files[file_sel[0]]
+    file_o = r""+db.get('spath')+"/ашдуы/" + download_files[file_sel[0]]
     if file_o == '':
-        download_files = os.listdir(r""+db.get('spath')+"/Files/")
+        download_files = os.listdir(r""+db.get('spath')+"/ашдуы/")
         files_var.set(download_files)
         return None
     shutil.copy(file_o, os.path.expanduser( '~' )+'\\Downloads\\' + os.path.basename(file_o))
@@ -124,7 +124,7 @@ comment.pack(padx=10, side=LEFT, anchor=NW)
 install_button.pack(pady=20)
 
 while True:
-    download_files = os.listdir(r""+db.get('spath')+"/Files")
+    download_files = os.listdir(r""+db.get('spath')+"/ашдуы")
     files_var.set(download_files) 
     window.update()
 
