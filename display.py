@@ -17,3 +17,4 @@ while True:
     f.close()
     time.sleep(0.5)
     os.system('cls')
+time.sleep(1)
