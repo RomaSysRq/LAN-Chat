@@ -34,13 +34,13 @@ def send():
     if name == True or False:
         lock()
         return None
-    sample_string = name + ': ' + sended_text + '\n'
+    sample_string = name + ': ' + sended_text
     sample_string_bytes = sample_string.encode("ascii")
 
     base64_bytes = base64.b64encode(sample_string_bytes)
     base64_string = base64_bytes.decode("ascii")
 
-    to_log = base64_string
+    to_log = base64_string + '\n'
     f = open(r""+db.get('spath')+"/Новый текстовый документ.txt", 'a')
     f.write(to_log)
     f.close()
