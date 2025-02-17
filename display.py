@@ -9,10 +9,10 @@ while True:
     f = open(r""+db.get('spath')+"/Новый текстовый документ.txt", 'r')
     for line in f:    
         base64_string = line
-        base64_bytes = base64_string.encode("ascii")
+        base64_bytes = base64_string.encode("utf-8")
 
         sample_string_bytes = base64.b64decode(base64_bytes)
-        sample_string = sample_string_bytes.decode("ascii")
+        sample_string = sample_string_bytes.decode("utf-8")
         print(sample_string)
     f.close()
     time.sleep(0.5)
