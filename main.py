@@ -9,7 +9,7 @@ from multiprocessing import Process
 import base64
 
 window = Tk()
-window.title("LAN Chat v1.5")
+window.title("LAN Chat v1.6")
 window.rowconfigure(0, minsize=800, weight=1)
 window.columnconfigure(1, minsize=800, weight=1)
 window.geometry("800x300")
@@ -35,10 +35,10 @@ def send():
         lock()
         return None
     sample_string = name + ': ' + sended_text
-    sample_string_bytes = sample_string.encode("ascii")
+    sample_string_bytes = sample_string.encode("utf-8")
 
     base64_bytes = base64.b64encode(sample_string_bytes)
-    base64_string = base64_bytes.decode("ascii")
+    base64_string = base64_bytes.decode("utf-8")
 
     to_log = base64_string + '\n'
     f = open(r""+db.get('spath')+"/Новый текстовый документ.txt", 'a')
